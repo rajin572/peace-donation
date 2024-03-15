@@ -5,6 +5,8 @@ import Spninner from "@/components/ui/Spninner";
 import { useGetDonationsQuery } from "@/redux/features/donation/donationApi";
 import { motion } from "framer-motion";
 import { TDonationCard } from "@/types";
+import { useAppSelector } from "@/redux/hooks";
+import ScrollToTop from "@/hooks/ScrollToTop";
 
 const intro = {
   hidden: { opacity: 0 },
@@ -28,6 +30,7 @@ const introChildren = {
 };
 
 const Donations = () => {
+  const { darkMode } = useAppSelector((store) => store.theme);
   const { data: donationData, isFetching } = useGetDonationsQuery(undefined);
 
   if (isFetching) {
@@ -38,9 +41,10 @@ const Donations = () => {
     );
   }
   return (
-    <div>
+    <div className={` min-h-screen w-full ${darkMode ? "dark" : ""}`}>
+      <ScrollToTop />
       <Container>
-        <div className="py-20 bg-white overflow-hidden">
+        <div className="py-20 overflow-hidden">
           <motion.div
             className="text-center mb-20"
             variants={intro}
@@ -54,7 +58,7 @@ const Donations = () => {
               All Donation Posts
             </motion.h4>
             <motion.h2
-              className="text-2xl md:text-3xl lg:text-4xl text-primary font-bold mb-2"
+              className="text-2xl md:text-3xl lg:text-4xl text-primary dark:text-white font-bold mb-2"
               variants={introChildren}
             >
               Support Our Cause
@@ -64,7 +68,7 @@ const Donations = () => {
             </motion.div>
           </motion.div>
           <motion.div
-            className="w-[90%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 mx-auto"
+            className="w-[95%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 justify-items-center gap-10 mx-auto"
             initial={{ opacity: 0, y: -200 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 1 }}

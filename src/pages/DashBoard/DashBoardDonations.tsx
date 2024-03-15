@@ -13,6 +13,7 @@ import {
 import { useGetDonationsQuery } from "@/redux/features/donation/donationApi";
 import { motion } from "framer-motion";
 import { TDonationDetail } from "@/types";
+import ScrollToTop from "@/hooks/ScrollToTop";
 
 const DashBoardDonations = () => {
   const { data: donationData, isFetching } = useGetDonationsQuery(undefined);
@@ -26,10 +27,12 @@ const DashBoardDonations = () => {
   }
   return (
     <motion.div
+      className="mb-20"
       initial={{ opacity: 0, y: 150 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 1 }}
     >
+      <ScrollToTop />
       <Table>
         <TableCaption>All Donation Post </TableCaption>
         <TableHeader>

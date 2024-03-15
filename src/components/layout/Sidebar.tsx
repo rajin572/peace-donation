@@ -10,7 +10,7 @@ type TSlider = {
 const Sidebar = ({ slider, setSlider }: TSlider) => {
   return (
     <motion.div
-      className=" bg-primary text-white h-screen pt-16 "
+      className=" bg-primary text-white h-screen pt-20 "
       initial={{ opacity: 0, x: -150 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0, duration: 1 }}
@@ -70,6 +70,9 @@ const Sidebar = ({ slider, setSlider }: TSlider) => {
             <li>
               <Link to="create-donation">Create Donation</Link>
             </li>
+            <li>
+              <Link to="create-testimonial">Create Testimonial</Link>
+            </li>
           </ul>
         </div>
         <div className="block lg:hidden">
@@ -82,6 +85,9 @@ const Sidebar = ({ slider, setSlider }: TSlider) => {
             </li>
             <li onClick={() => setSlider(!slider)}>
               <Link to="create-donation">Create Donation</Link>
+            </li>
+            <li onClick={() => setSlider(!slider)}>
+              <Link to="create-testimonial">Create Testimonial</Link>
             </li>
           </ul>
         </div>

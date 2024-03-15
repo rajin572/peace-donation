@@ -62,7 +62,7 @@ const Banner = () => {
         </motion.p>
         <motion.div variants={introChildren}>
           <Link to="/donations">
-            <Button className="bg-secondary">Donate Now</Button>
+            <Button className="bg-secondary text-white ">Donate Now</Button>
           </Link>
         </motion.div>
       </motion.div>

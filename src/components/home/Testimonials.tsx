@@ -2,7 +2,6 @@ import { FreeMode, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import backgroundImage from "../../assets/testimonial-bg.png";
 import TestimonialCard from "../ui/TestimonialCard";
-import getAllTestimonials from "@/data/TestimonialData";
 import { TDonorTestimonial } from "@/types";
 import AnimatedUnderline from "../layout/AnimatedUnderline";
 import { useRef } from "react";
@@ -12,12 +11,19 @@ import { motion, useInView } from "framer-motion";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-
-const donorTestimonials: TDonorTestimonial[] = getAllTestimonials();
+import { useGetTestimonialQuery } from "@/redux/features/tesimonial/testimonial";
 
 const Testimonials = () => {
+  const { data: testimonialData } = useGetTestimonialQuery(undefined);
+  const sortedTestimonialData = testimonialData?.data
+    ?.slice()
+    .sort(
+      (b: { amount: number }, a: { amount: number }) => a.amount - b.amount
+    );
+
   const view = useRef<HTMLDivElement>(null);
   const inView = useInView(view);
+
   return (
     <div
       style={{
@@ -69,13 +75,15 @@ const Testimonials = () => {
             clickable: true,
           }}
           modules={[FreeMode, Pagination]}
-          className="mySwiper w-[90%] text-white"
+          className="mySwiper w-[95%] text-white"
         >
-          {donorTestimonials.map((donor) => (
-            <SwiperSlide className="mb-20" key={donor.id}>
-              <TestimonialCard donor={donor}></TestimonialCard>
-            </SwiperSlide>
-          ))}
+          {sortedTestimonialData
+            ?.slice(0, 6)
+            .map((donor: TDonorTestimonial) => (
+              <SwiperSlide className="mb-20" key={donor._id}>
+                <TestimonialCard donor={donor}></TestimonialCard>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </motion.div>
     </div>

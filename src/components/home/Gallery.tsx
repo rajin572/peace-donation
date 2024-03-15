@@ -21,12 +21,12 @@ const Gallery = () => {
   const view = useRef<HTMLDivElement>(null);
   const inView = useInView(view);
   return (
-    <div className="py-20 bg-gray-100">
+    <div className="py-20  bg-slate-100 dark:bg-zinc-950">
       <div className="text-center mb-20">
         <h4 className="text-secondary text-lg font-semibold mb-3">
           OUR PHOTO GALLERY
         </h4>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-primary font-bold mb-2">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl text-primary dark:text-white font-bold mb-2">
           Photos of Donations and Humanitarian Works
         </h2>
         <AnimatedUnderline className="mx-auto" />
@@ -63,7 +63,7 @@ const Gallery = () => {
             clickable: true,
           }}
           modules={[FreeMode, Pagination]}
-          className="mySwiper w-[90%] text-white"
+          className="mySwiper w-[95%] text-white"
         >
           <SwiperSlide className="mb-20">
             <img src={galleyImg1} alt="" />

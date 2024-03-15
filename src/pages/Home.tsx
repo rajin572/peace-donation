@@ -5,17 +5,23 @@ import NewsLetter from "@/components/home/NewsLetter";
 import OurMission from "@/components/home/OurMission";
 import Testimonials from "@/components/home/Testimonials";
 import TopDonations from "@/components/home/TopDonations";
+import ScrollToTop from "@/hooks/ScrollToTop";
+import { useAppSelector } from "@/redux/hooks";
 
 const Home = () => {
+  const { darkMode } = useAppSelector((store) => store.theme);
   return (
-    <div>
-      <Banner />
-      <AboutUs />
-      <TopDonations />
-      <Gallery />
-      <OurMission />
-      <Testimonials />
-      <NewsLetter />
+    <div className={` min-h-screen w-full ${darkMode ? "dark" : ""}`}>
+      <div className="dark:bg-black dark:text-white">
+        <ScrollToTop />
+        <Banner />
+        <AboutUs />
+        <TopDonations />
+        <Gallery />
+        <OurMission />
+        <Testimonials />
+        <NewsLetter />
+      </div>
     </div>
   );
 };

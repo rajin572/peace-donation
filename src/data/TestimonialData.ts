@@ -48,7 +48,7 @@ const testimonials = [
     name: "Sarah Martinez",
     donationAmount: "$150",
     testimonial:
-      "It feels great to contribute to positive change. Keep up the fantastic work!",
+      "Awesome Peace! It feels great to contribute to positive change. Keep up the fantastic work!",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5kDgh3LMMEqZ4G2I0CuPZudlziX_4pmiJ-A&usqp=CAU",
   },

@@ -25,7 +25,7 @@ const AboutUs = () => {
   };
 
   return (
-    <div className=" bg-gray-100">
+    <div className=" bg-slate-100 dark:bg-zinc-950">
       <motion.div
         ref={view}
         className="py-20 overflow-hidden"
@@ -39,18 +39,16 @@ const AboutUs = () => {
           <h4 className="text-secondary text-lg font-semibold mb-3">
             About Us
           </h4>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl text-primary font-bold mb-2">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2">
             We Work For People
           </h2>
           <AnimatedUnderline className="mx-auto" />
         </div>
-        <div className="w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 justify-items-center-between items-center gap-5 lg:gap-20">
+        <div className="w-[95%] mx-auto grid grid-cols-1 lg:grid-cols-2 justify-items-center-between items-center gap-5 lg:gap-20">
           <div>
-            <h1 className="text-primary text-2xl md:text-3xl font-bold mb-5">
-              About Us
-            </h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-5">About Us</h1>
             {/* <AnimatedUnderline /> */}
-            <p className="text-slate-600">
+            <p className="text-slate-700 dark:text-slate-400">
               Our story is one of passion, perseverance, and unwavering
               commitment to our values. From humble beginnings, we have grown
               into a thriving community of like-minded individuals, volunteers,
@@ -66,7 +64,7 @@ const AboutUs = () => {
             </p>
           </div>
           <motion.div variants={aboutImage} initial="initial" animate="animate">
-            <img className="w-full max-h-80" src={aboutImg} alt="" />
+            <img className="w-full max-h-96" src={aboutImg} alt="" />
           </motion.div>
         </div>
       </motion.div>

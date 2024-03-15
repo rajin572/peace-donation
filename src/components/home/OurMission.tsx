@@ -47,18 +47,18 @@ const OurMission = () => {
   const view = useRef<HTMLDivElement>(null);
   const inView = useInView(view);
   return (
-    <div className="py-20 bg-white">
+    <div className="py-20">
       <div className="text-center mb-20">
         <h4 className="text-secondary text-lg font-semibold mb-3">
           JOIN OUR MISSION
         </h4>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-primary font-bold mb-2">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl text-primary dark:text-white font-bold mb-2">
           How Can You Help
         </h2>
         <AnimatedUnderline className="mx-auto" />
       </div>
       <motion.div
-        className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-3 justify-items-center items-center gap-5 text-center"
+        className="w-[95%] mx-auto grid grid-cols-1 md:grid-cols-3 justify-items-center items-center gap-5 text-center"
         ref={view}
         variants={intro}
         initial="hidden"
@@ -69,10 +69,12 @@ const OurMission = () => {
           variants={introChildren}
         >
           <motion.div variants={icons} initial="initial" animate="animate">
-            <FaHandHoldingHeart className="size-24 bg-primary p-5 rounded-full border-2 border-secondary text-secondary mb-3"></FaHandHoldingHeart>
+            <FaHandHoldingHeart className="size-24 bg-primary  p-5 rounded-full border-2 border-secondary text-secondary mb-3"></FaHandHoldingHeart>
           </motion.div>
-          <h2 className="text-primary text-2xl font-bold">DONATION</h2>
-          <p className="text-slate-700">
+          <h2 className="text-primary dark:text-white text-2xl font-bold">
+            DONATION
+          </h2>
+          <p className="text-slate-700 dark:text-slate-300">
             Your generosity fuels change and transforms lives.
           </p>
         </motion.div>
@@ -82,10 +84,12 @@ const OurMission = () => {
           variants={introChildren}
         >
           <motion.div variants={icons} initial="initial" animate="animate">
-            <BsFillBuildingsFill className="size-24 bg-primary p-5 rounded-full border-2 border-secondary text-secondary mb-3"></BsFillBuildingsFill>
+            <BsFillBuildingsFill className="size-24 bg-primary  p-5 rounded-full border-2 border-secondary text-secondary mb-3"></BsFillBuildingsFill>
           </motion.div>
-          <h2 className="text-primary text-2xl font-bold">REBUILD</h2>
-          <p className="text-slate-700">
+          <h2 className="text-primary dark:text-white text-2xl font-bold">
+            REBUILD
+          </h2>
+          <p className="text-slate-700 dark:text-slate-300">
             Together, we're rebuilding communities and restoring hope.
           </p>
         </motion.div>
@@ -93,10 +97,12 @@ const OurMission = () => {
         <motion.div variants={introChildren}>
           <div className="flex justify-center items-center gap-2 flex-col">
             <motion.div variants={icons} initial="initial" animate="animate">
-              <GiPeaceDove className="size-24 bg-primary p-5 rounded-full border-2 border-secondary text-secondary mb-3"></GiPeaceDove>
+              <GiPeaceDove className="size-24 bg-primary  p-5 rounded-full border-2 border-secondary text-secondary mb-3"></GiPeaceDove>
             </motion.div>
-            <h2 className="text-primary text-2xl font-bold">PEACE</h2>
-            <p className="text-slate-700">
+            <h2 className="text-primary dark:text-white text-2xl font-bold">
+              PEACE
+            </h2>
+            <p className="text-slate-700 dark:text-slate-300">
               Join us in fostering harmony and building a world of unity.
             </p>
           </div>
