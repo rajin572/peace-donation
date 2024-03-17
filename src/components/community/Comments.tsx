@@ -18,11 +18,10 @@ const Comments = () => {
   const [image, setImage] = useState("");
   const user = useAppSelector(selectCurrentUser);
 
-  const { data: CommentData, isFetching: commentFetching } =
-    useGetCommentQuery(undefined);
-  console.log(CommentData?.data);
-  const { data: donorData, isFetching } = useGetSingleDonorQuery(user?.email, {
-    skip: commentFetching,
+  const { data: donorData, isFetching: donnorFetching } =
+    useGetSingleDonorQuery(user?.email);
+  const { data: CommentData, isFetching } = useGetCommentQuery(undefined, {
+    skip: donnorFetching,
   });
   const [postComment] = usePostCommentMutation();
 
@@ -41,7 +40,7 @@ const Comments = () => {
     const toastId = toast.loading("Posting....");
     const commentData = {
       image: image,
-      name: user?.name,
+      name: user?.name.toLowerCase(),
       email: user?.email,
       comment: data.comment,
     };
@@ -61,9 +60,9 @@ const Comments = () => {
       });
     }
   };
-  if (commentFetching || isFetching) {
+  if (isFetching || donnorFetching) {
     return (
-      <div className="h-screen">
+      <div className="h-fit">
         <Spninner />
       </div>
     );

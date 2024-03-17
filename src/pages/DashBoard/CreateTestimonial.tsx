@@ -35,7 +35,7 @@ const CreateTestimonial = () => {
 
       const testimonialData = {
         image: imageUrl?.data?.url,
-        name: data.name,
+        name: data.name.toLowerCase(),
         email: data.email,
         amount: Number(data.amount),
         testimonial: data.testimonial,

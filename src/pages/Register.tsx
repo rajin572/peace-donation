@@ -40,7 +40,7 @@ const Register = () => {
     const toastId = toast.loading("Creating.....");
     try {
       const userInfo = {
-        name: data.name,
+        name: data.name.toLowerCase(),
         email: data.email,
         password: data.password,
       };
