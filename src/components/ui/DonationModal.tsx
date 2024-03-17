@@ -151,6 +151,7 @@ const DonationModal = ({
                   name="amount"
                   placeholder="Enter Your Amount"
                   required
+                  max={donation.amount}
                   className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-1 rounded"
                 />
               </div>

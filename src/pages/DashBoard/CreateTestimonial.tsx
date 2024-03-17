@@ -9,29 +9,26 @@ import { useGetSingleDonorQuery } from "@/redux/features/donor/donorApi";
 import Spninner from "@/components/ui/Spninner";
 import useImageUpload from "@/hooks/useImageUpload";
 
+// const defaultValues= {
+//   email: donorData?.data?.email,
+//   image: donorData?.data?.image,
+//   name: donorData?.data?.name,
+//   amount: donorData?.data?.amount || 0,
+//   testimonial: "",
+// }
+
 const CreateTestimonial = () => {
   const user = useAppSelector(selectCurrentUser);
 
-  const {
-    data: donorData,
-    isFetching,
-    isLoading,
-  } = useGetSingleDonorQuery(user!.email);
+  const { data: donorData, isFetching } = useGetSingleDonorQuery(user!.email);
 
   const [postTestimonial] = usePostTestimonialMutation();
 
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: {
-      email: donorData?.data?.email,
-      image: donorData?.data?.image,
-      name: donorData?.data?.name,
-      amount: donorData?.data?.amount || 0,
-      testimonial: "",
-    },
-  });
+  const { register, handleSubmit, reset } = useForm();
   const { uploadImage } = useImageUpload();
 
   const onSubmit = async (data: FieldValues) => {
+    const toastId = toast.loading("Creating Testimonial....");
     try {
       const imageData = data.image;
       const imageUrl = await uploadImage(imageData);
@@ -40,27 +37,26 @@ const CreateTestimonial = () => {
         image: imageUrl?.data?.url,
         name: data.name,
         email: data.email,
-        amount: Number(data.amount) || "Number",
+        amount: Number(data.amount),
         testimonial: data.testimonial,
       };
 
-      await postTestimonial(testimonialData);
+      postTestimonial(testimonialData).unwrap;
 
-      toast.success("Testimonial Post Successfully", { duration: 1000 });
+      toast.success("Testimonial Post Successfully", {
+        id: toastId,
+        duration: 1000,
+      });
       reset();
     } catch (err) {
-      toast.error("Something Want Wrong", { duration: 1000 });
+      toast.error("Something Want Wrong", {
+        id: toastId,
+        duration: 1000,
+      });
     }
   };
   const { darkMode } = useAppSelector((store) => store.theme);
   if (isFetching) {
-    return (
-      <div className="h-screen">
-        <Spninner />
-      </div>
-    );
-  }
-  if (isLoading) {
     return (
       <div className="h-screen">
         <Spninner />
@@ -133,6 +129,7 @@ const CreateTestimonial = () => {
                 type="text"
                 {...register("name")}
                 name="name"
+                defaultValue={donorData?.data?.name || ""}
                 placeholder="Enter Your Name"
                 required
                 className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-3 rounded"
@@ -162,6 +159,7 @@ const CreateTestimonial = () => {
                 {...register("email")}
                 name="email"
                 placeholder="Enter Your Email"
+                defaultValue={donorData?.data?.email || ""}
                 required
                 className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-3 rounded"
               />
@@ -183,12 +181,13 @@ const CreateTestimonial = () => {
                   <rect width="18" height="14" x="3" y="5" rx="2" ry="2" />
                   <path d="M7 15h4M15 15h2M7 11h2M13 11h4" />
                 </svg>
-                <span> Amount :</span>
+                <span> Your Donated Amount :</span>
               </label>
               <input
                 type="number"
                 {...register("amount")}
                 name="amount"
+                defaultValue={donorData?.data?.amount || 0}
                 placeholder="Amonut"
                 required
                 readOnly

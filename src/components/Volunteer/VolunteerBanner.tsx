@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-import backgroundImage from "../../assets/bannerImg.jpg";
-import { Button } from "../ui/button";
+import backgroundImage from "../../assets/volunteersBanner.jpg";
 import { motion } from "framer-motion";
 
 const intro = {
@@ -24,10 +22,10 @@ const introChildren = {
   },
 };
 
-const Banner = () => {
+const VolunteerBanner = () => {
   return (
     <motion.div
-      className=" bg-center bg-no-repeat bg-cover h-screen flex justify-center items-center text-center"
+      className=" bg-center bg-no-repeat bg-cover py-12 flex justify-center items-center text-center"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${backgroundImage})`,
         backgroundRepeat: "no-repeat",
@@ -44,30 +42,26 @@ const Banner = () => {
         animate="visible"
       >
         <motion.h4
-          className="text-secondary text-lg md:text-xl lg:text-2xl font-semibold mb-6"
+          className="text-secondary text-lg md:text-xl lg:text-xl font-bold mb-3"
           variants={introChildren}
         >
-          Make a Difference Today!
+          Serve the humanity
         </motion.h4>
         <motion.h2
-          className="text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-6"
+          className="text-xl md:text-xxl lg:text-2xl text-white font-bold mb-3"
           variants={introChildren}
         >
-          Let's Help Those Who Are More In Need
+          Sign up for volunteer program
         </motion.h2>
         <motion.p className="text-white mb-10" variants={introChildren}>
           Transform lives with your donation. Join us in creating change.
           <br />
-          Every contribution matters. Donate now.
+          Every contribution matters.
         </motion.p>
-        <motion.div variants={introChildren}>
-          <Link to="/donations">
-            <Button className="bg-secondary text-white ">Donate Now</Button>
-          </Link>
-        </motion.div>
+        <motion.div variants={introChildren}></motion.div>
       </motion.div>
     </motion.div>
   );
 };
 
-export default Banner;
+export default VolunteerBanner;

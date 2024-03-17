@@ -1,6 +1,7 @@
 import App from "@/App";
 import DashBoradLayout from "@/components/layout/DashBoradLayout";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import AboutUs from "@/pages/AboutUs";
 import Community from "@/pages/Community";
 import CreateDonations from "@/pages/DashBoard/CreateDonations";
 import CreateTestimonial from "@/pages/DashBoard/CreateTestimonial";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
       {
         path: "/donations",

@@ -56,6 +56,18 @@ const Navbar = () => {
               <ul className="flex justify-end items-center gap-5 lg:flex-row flex-col lg:py-0 py-10">
                 <li className="lg:mb-0 mb-5 cursor-pointer  group relative text-white hover:text-secondary">
                   <NavLink
+                    to="/about-us"
+                    className={({ isActive }) =>
+                      cn({
+                        "text-secondary": isActive,
+                      })
+                    }
+                  >
+                    About Us
+                  </NavLink>
+                </li>
+                <li className="lg:mb-0 mb-5 cursor-pointer  group relative text-white hover:text-secondary">
+                  <NavLink
                     to="/donations"
                     className={({ isActive }) =>
                       cn({
@@ -145,6 +157,21 @@ const Navbar = () => {
             {/* //*For Tab or Mobile */}
             <div className="block lg:hidden">
               <ul className="flex justify-end items-center gap-5 lg:flex-row flex-col lg:py-0 py-10">
+                <li
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="lg:mb-0 mb-5 cursor-pointer  group relative text-white hover:text-secondary"
+                >
+                  <NavLink
+                    to="/about-us"
+                    className={({ isActive }) =>
+                      cn({
+                        "text-secondary": isActive,
+                      })
+                    }
+                  >
+                    About Us
+                  </NavLink>
+                </li>
                 <li
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   className="lg:mb-0 mb-5 cursor-pointer  group relative text-white hover:text-secondary"

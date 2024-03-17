@@ -3,7 +3,7 @@ import { useRef } from "react";
 import aboutImg from "../../assets/about.jpg";
 import AnimatedUnderline from "../layout/AnimatedUnderline";
 
-const AboutUs = () => {
+const SectionAboutUs = () => {
   const view = useRef<HTMLDivElement>(null);
   const inView = useInView(view);
 
@@ -72,4 +72,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default SectionAboutUs;
