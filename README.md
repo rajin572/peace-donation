@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# L2B2-Frontend-Path-Assignment-6-Peace-Donation-Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Link:
 
-Currently, two official plugins are available:
+Website Live Link: [peace](https://peace-donation.netlify.app/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation:
 
-## Expanding the ESLint configuration
+1. Clone the repository.
+2. Install dependencies using `pnpm install`.
+3. Run the website using `pnpm run dev`.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Description:
 
-- Configure the top-level `parserOptions` property like this:
+Welcome to Peace - where every act of kindness makes a difference. At Peace, we believe in the power of giving and the impact it can have on the lives of those in need. Explore our donation posts below and join us in spreading hope, compassion, and support to communities around the world. Together, let's make the world a brighter and more peaceful place for everyone. At Peace, we believe that every act of kindness, no matter how small, has the power to create positive change. Join us on our mission to build a more peaceful and equitable world through the simple act of giving. Together, we can make a difference.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Features :
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. A user-friendly website facilitating donations where users can contribute to various donation provided by the admin.
+2. Anyone can see the posts of the donations.
+3. Only Authenticate user donate and explore the dashborad
+4. An interactive UI design that invites users to explore and engage with the website effortlessly, facilitating seamless navigation and interaction
+
+## Tecnology I have Used:
+
+1.TypeScript 2. React JS 3. Redux 4. Tailwind CSS 5. ShadCn 6. RTK Query 6. React Hook Form
