@@ -115,7 +115,7 @@ const Comments = () => {
               name="comment"
               placeholder="Enter Your Comment"
               required
-              className="border focus:border-secondary focus:ring-secondary p-2 outline-none w-[260px] sm:w-[500px] md:w-[700px] rounded pe-16"
+              className="text-black border focus:border-secondary focus:ring-secondary p-2 outline-none w-[260px] sm:w-[500px] md:w-[700px] rounded pe-16"
             />
           </div>
 
@@ -127,7 +127,7 @@ const Comments = () => {
             ) : (
               <button
                 disabled
-                className="w-full border border-primary bg-primary text-white font-bold  px-4 py-2 rounded-r dark:bg-secondary dark:border-secondary duration-500 transition-all  flex justify-center items-center gap-1"
+                className="w-full border border-primary bg-primary cursor-not-allowed text-white font-bold  px-4 py-2 rounded-r dark:bg-secondary dark:border-secondary duration-500 transition-all  flex justify-center items-center gap-1"
               >
                 <Ban className="text-secondary dark:text-primary" />
               </button>

@@ -101,7 +101,7 @@ const SignUpVolunteer = () => {
                   name="image"
                   placeholder="Enter Your Image Link"
                   required
-                  className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-3 rounded"
+                  className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-3 rounded text-black dark:text-white"
                 />
               </div>
               <div className="mb-5">

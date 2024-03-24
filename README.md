@@ -23,4 +23,4 @@ Welcome to Peace - where every act of kindness makes a difference. At Peace, we 
 
 ## Tecnology I have Used:
 
-1.TypeScript 2. React JS 3. Redux 4. Tailwind CSS 5. ShadCn 6. RTK Query 6. React Hook Form
+1.TypeScript 2. React JS 3. Redux 4. Tailwind CSS 5. ShadCn 6. RTK Query 6. React Hook Form 7. Redux Persist

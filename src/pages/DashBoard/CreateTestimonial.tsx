@@ -21,6 +21,7 @@ const CreateTestimonial = () => {
   const user = useAppSelector(selectCurrentUser);
 
   const { data: donorData, isFetching } = useGetSingleDonorQuery(user!.email);
+  console.log(donorData);
 
   const [postTestimonial] = usePostTestimonialMutation();
 
@@ -103,7 +104,7 @@ const CreateTestimonial = () => {
                 name="image"
                 placeholder="Enter Your Image Link"
                 required
-                className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-3 rounded"
+                className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-3 rounded text-black dark:text-white"
               />
             </div>
             <div className="mb-5">
@@ -225,25 +226,36 @@ const CreateTestimonial = () => {
             </div>
 
             <div className=" mt-6 col-span-2">
-              <button className="w-full border-2 border-primary bg-primary text-white font-bold py-2 rounded dark:bg-secondary dark:border-secondary duration-500 transition-all  flex justify-center items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-user-round-plus"
-                >
-                  <rect width="18" height="18" x="3" y="3" rx="2" />
-                  <path d="M8 12h8" />
-                  <path d="M12 8v8" />
-                </svg>
-                <span>Create Testimonial</span>
-              </button>
+              {donorData?.data ? (
+                <button className="w-full border-2 border-primary bg-primary text-white font-bold py-2 rounded dark:bg-secondary dark:border-secondary duration-500 transition-all  flex justify-center items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-user-round-plus"
+                  >
+                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                    <path d="M8 12h8" />
+                    <path d="M12 8v8" />
+                  </svg>
+                  <span>Create Testimonial</span>
+                </button>
+              ) : (
+                <p className="text-primary dark:text-white font-bold text-lg">
+                  <span className="text-secondary font-bold underline">
+                    Note
+                  </span>
+                  <span className="text-secondary font-bold"> : </span>
+                  If You Are Not a Donor You Can't Post Any Testimonial. You
+                  Must Be a Donor To Post a Testimonial.
+                </p>
+              )}
             </div>
           </form>
         </motion.div>

@@ -64,7 +64,7 @@ const NewsLetter = () => {
           variants={introChildren}
         >
           <input
-            className="w-[70%] sm:w-[500px] py-2 px-2 md:py-3 md:px-5  outline-none border-none shadow-md rounded-lg"
+            className="w-[70%] sm:w-[500px] py-2 px-2 md:py-3 md:px-5  outline-none border-none shadow-md rounded-lg text-black"
             type="email"
             placeholder="Enter Your Email"
           />
