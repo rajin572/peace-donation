@@ -10,6 +10,7 @@ import {
 import useImageUpload from "@/hooks/useImageUpload";
 import { usePostDonorMutation } from "@/redux/features/donor/donorApi";
 import { TDonationDetail } from "@/types";
+import { HeartHandshake } from "lucide-react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -63,8 +64,9 @@ const DonationModal = ({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-full sm:w-[40%] md:w-[30%] lg:w-[20%] dark:bg-secondary transition-all duration-500">
+        <Button className="w-full sm:w-[40%] md:w-[30%] lg:w-[20%] dark:bg-secondary transition-all duration-500 gap-2">
           Donate Now
+          <HeartHandshake />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

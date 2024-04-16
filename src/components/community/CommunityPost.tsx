@@ -4,7 +4,7 @@ const CommunityPost = () => {
   return (
     <div className="mb-20">
       <div>
-        <div className="w-[95%] lg:w-full mx-auto">
+        <div className=" lg:w-full mx-auto">
           {/* //* Image */}
           <div>
             <img

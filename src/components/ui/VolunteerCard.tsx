@@ -15,12 +15,12 @@ const VolunteerCard = ({ volunteer }: { volunteer: TVolunteerCard }) => {
   const { style, componentRef } = useScrollGrow();
   return (
     <motion.div
-      className="w-[250px] group bg-white dark:bg-zinc-950 rounded-md dark:shadow-zinc-900 border dark:border-primary border-secondary shadow-md"
+      className="w-[250px] group bg-white dark:bg-zinc-950 rounded-md "
       style={style}
       ref={componentRef}
     >
       <img className="h-64 w-full rounded-t-md" src={volunteer.image} alt="" />
-      <div className="mt-2 w-full px-2">
+      <div className=" w-full p-2 border-x">
         <p className=" font-bold mb-1 flex items-center">
           <span className="text-secondary">
             <AtSign width={20} height={16} className="text-secondary" />
@@ -36,7 +36,7 @@ const VolunteerCard = ({ volunteer }: { volunteer: TVolunteerCard }) => {
           <span>{volunteer.phoneNumber}</span>
         </p>
       </div>
-      <div className="flex justify-around items-center gap-5 mt-2 py-2 bg-primary w-full rounded-b-md">
+      <div className="flex justify-around items-center gap-5  py-2 bg-primary w-full rounded-b-md">
         <Facebook className="text-secondary cursor-pointer" />
         <Linkedin className="text-secondary cursor-pointer" />
         <Instagram className="text-secondary cursor-pointer" />

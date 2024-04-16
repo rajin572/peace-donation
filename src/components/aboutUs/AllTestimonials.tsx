@@ -14,7 +14,7 @@ import "swiper/css/pagination";
 import { useGetTestimonialQuery } from "@/redux/features/tesimonial/testimonial";
 import Container from "../ui/Container";
 
-const Testimonials = () => {
+const AllTestimonials = () => {
   const { data: testimonialData } = useGetTestimonialQuery(undefined);
   const sortedTestimonialData = testimonialData?.data
     ?.slice()
@@ -41,7 +41,7 @@ const Testimonials = () => {
             Testimonial
           </h4>
           <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-2">
-            Our Top 6 Donor
+            Our Donors Feedback
           </h2>
           <AnimatedUnderline className="mx-auto" />
         </div>
@@ -79,13 +79,11 @@ const Testimonials = () => {
             modules={[FreeMode, Pagination]}
             className="mySwiper text-white"
           >
-            {sortedTestimonialData
-              ?.slice(0, 6)
-              .map((donor: TDonorTestimonial) => (
-                <SwiperSlide className="mb-20" key={donor._id}>
-                  <TestimonialCard donor={donor}></TestimonialCard>
-                </SwiperSlide>
-              ))}
+            {sortedTestimonialData?.map((donor: TDonorTestimonial) => (
+              <SwiperSlide className="mb-20" key={donor._id}>
+                <TestimonialCard donor={donor}></TestimonialCard>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </motion.div>
       </Container>
@@ -93,4 +91,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default AllTestimonials;

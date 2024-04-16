@@ -6,7 +6,6 @@ import { useGetDonationsQuery } from "@/redux/features/donation/donationApi";
 import { motion } from "framer-motion";
 import { TDonationCard } from "@/types";
 import { useAppSelector } from "@/redux/hooks";
-import ScrollToTop from "@/hooks/ScrollToTop";
 
 const intro = {
   hidden: { opacity: 0 },
@@ -42,7 +41,6 @@ const Donations = () => {
   }
   return (
     <div className={` min-h-screen w-full ${darkMode ? "dark" : ""}`}>
-      <ScrollToTop />
       <Container>
         <div className="py-20 overflow-hidden">
           <motion.div
@@ -68,7 +66,7 @@ const Donations = () => {
             </motion.div>
           </motion.div>
           <motion.div
-            className="w-[95%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 justify-items-center gap-10 mx-auto"
+            className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 mx-auto"
             initial={{ opacity: 0, y: -200 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 1 }}

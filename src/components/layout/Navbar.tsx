@@ -32,14 +32,14 @@ const Navbar = () => {
       transition={{ delay: 0.5, duration: 1 }}
     >
       <Container>
-        <header className="w-[95%] mx-auto py-3 flex justify-between items-center z-50">
+        <header className=" py-3 flex justify-between items-center z-50">
           {/* //*Company name */}
           <div>
             <NavLink
               to="/"
               className="text-2xl cursor-pointer flex justify-center items-end gap-1"
             >
-              <span className="font-bold opacity-90">Peace</span>
+              <span className="font-bold">Peace</span>
             </NavLink>
           </div>
           {/* //*Nav NavLinks */}
@@ -51,9 +51,9 @@ const Navbar = () => {
             }
           >
             {/* //* For Laptop or Desktop */}
-            <div className="hidden lg:block ">
+            <div className="hidden lg:block  lg:text-sm xl:text-base">
               {" "}
-              <ul className="flex justify-end items-center gap-5 lg:flex-row flex-col lg:py-0 py-10">
+              <ul className="flex justify-end items-center gap-3 xl:gap-5 lg:flex-row flex-col lg:py-0 py-10">
                 <li className="lg:mb-0 mb-5 cursor-pointer  group relative text-white hover:text-secondary">
                   <NavLink
                     to="/about-us"
@@ -155,8 +155,8 @@ const Navbar = () => {
               </ul>
             </div>
             {/* //*For Tab or Mobile */}
-            <div className="block lg:hidden">
-              <ul className="flex justify-end items-center gap-5 lg:flex-row flex-col lg:py-0 py-10">
+            <div className="block lg:hidden lg:text-sm xl:text-base">
+              <ul className="flex justify-end items-center gap-3 xl:gap-5 lg:flex-row flex-col lg:py-0 py-10">
                 <li
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   className="lg:mb-0 mb-5 cursor-pointer  group relative text-white hover:text-secondary"

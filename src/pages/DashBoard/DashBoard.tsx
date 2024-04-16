@@ -1,5 +1,5 @@
+import Container from "@/components/ui/Container";
 import Spninner from "@/components/ui/Spninner";
-import ScrollToTop from "@/hooks/ScrollToTop";
 import { useGetDonationsQuery } from "@/redux/features/donation/donationApi";
 import { useAppSelector } from "@/redux/hooks";
 import { TDonationDetail } from "@/types";
@@ -44,24 +44,25 @@ const DashBoard = () => {
 
     return (
       <div className={` min-h-screen w-full ${darkMode ? "dark" : ""}`}>
-        <ScrollToTop />
         <motion.div
           initial={{ opacity: 0, y: 150 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 1 }}
           className="mt-20"
         >
-          <Chart
-            chartType="PieChart"
-            data={data}
-            options={{
-              ...options,
-              backgroundColor: `${darkMode ? "rgb(0, 0, 0)" : "#fff"}`,
-            }}
-            width={"100%"}
-            height={"400px"}
-            className="dark:text-white"
-          />
+          <Container>
+            <Chart
+              chartType="PieChart"
+              data={data}
+              options={{
+                ...options,
+                backgroundColor: `${darkMode ? "rgb(0, 0, 0)" : "#fff"}`,
+              }}
+              width={"100%"}
+              height={"400px"}
+              className="dark:text-white"
+            />
+          </Container>
         </motion.div>
       </div>
     );

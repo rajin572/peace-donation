@@ -1,10 +1,15 @@
-import DonationModal from "@/components/ui/DonationModal";
+import DonationSinglePost from "@/components/Donation/DonationSinglePost";
+import Container from "@/components/ui/Container";
 import Spninner from "@/components/ui/Spninner";
-import ScrollToTop from "@/hooks/ScrollToTop";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
-import { useGetSingleDonationQuery } from "@/redux/features/donation/donationApi";
+import {
+  useGetDonationsQuery,
+  useGetSingleDonationQuery,
+} from "@/redux/features/donation/donationApi";
 import { useAppSelector } from "@/redux/hooks";
 import { useParams } from "react-router-dom";
+import { TDonationCard } from "@/types";
+import RecentDonationCard from "@/components/Donation/RecentDonationCard";
 
 const DonationDetails = () => {
   const { darkMode } = useAppSelector((store) => store.theme);
@@ -12,6 +17,14 @@ const DonationDetails = () => {
 
   const { id } = useParams();
   const { data: donation, isFetching } = useGetSingleDonationQuery(id);
+
+  const { data: donationData } = useGetDonationsQuery(undefined);
+  console.log(donationData?.data);
+  const sortedDonationData = donationData?.data
+    ?.slice()
+    .sort(
+      (b: { amount: number }, a: { amount: number }) => a.amount - b.amount
+    );
 
   if (isFetching) {
     return (
@@ -22,40 +35,32 @@ const DonationDetails = () => {
   }
   return (
     <div className={` min-h-screen w-full ${darkMode ? "dark" : ""}`}>
-      <ScrollToTop />
-      <div className="py-20 w-[95%] mx-auto">
-        <div className="w-[95%] lg:w-full mx-auto">
-          <div>
-            <img
-              className="w-full h-[300px] md:h-[400px] lg:h-[500px]"
-              src={donation?.data?.image}
-              alt=""
-            />
-          </div>
-          <div>
-            <h1 className="text-2xl md:text-3xl text-primary dark:text-white font-bold mt-10 mb-4">
-              {donation?.data?.title}
-            </h1>
-            <h3 className="md:text-lg font-semibold text-secondary mb-2">
-              <span className="text-primary dark:text-white">Category : </span>
-              {donation?.data?.category}
-            </h3>
-            <h4 className="md:text-lg font-semibold text-secondary mb-10">
-              {" "}
-              <span className="text-primary dark:text-white">Amount : </span>
-              {`$${donation?.data?.amount}`}
-            </h4>
-            <div className="text-slate-700 dark:text-slate-400">
-              <p className="text-lg md:text-xl text-primary font-semibold mb-2 dark:text-white">
-                Description :
-              </p>
-              <p>{donation?.data?.description}</p>
+      <div className="mx-auto">
+        <Container>
+          <div className="py-20 mx-auto grid grid-cols-1 lg:grid-cols-12 justify-items-center items-start gap-10">
+            <div className="lg:col-span-9">
+              <DonationSinglePost donation={donation?.data} user={user} />
+            </div>
+            <div className="lg:col-span-3 w-full">
+              <h1 className="text-xl md:text-2xl text-primary dark:text-white font-bold">
+                Recent Posts
+              </h1>
+              <p className="w-28 h-1 rounded-xl bg-secondary mb-4"></p>
+              {sortedDonationData
+                ?.slice(0, 8)
+                .map((donation: TDonationCard) => (
+                  <RecentDonationCard
+                    key={donation._id}
+                    image={donation.image}
+                    title={donation.title}
+                    category={donation.category}
+                    amount={donation.amount}
+                    _id={donation._id}
+                  />
+                ))}
             </div>
           </div>
-          <div className="mt-10 text-end">
-            <DonationModal donation={donation?.data} user={user} />
-          </div>
-        </div>
+        </Container>
       </div>
     </div>
   );

@@ -16,82 +16,85 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import AnimatedUnderline from "../layout/AnimatedUnderline";
+import Container from "../ui/Container";
 
 const Gallery = () => {
   const view = useRef<HTMLDivElement>(null);
   const inView = useInView(view);
   return (
     <div className="py-20  bg-slate-100 dark:bg-zinc-950">
-      <div className="text-center mb-20">
-        <h4 className="text-secondary text-lg font-semibold mb-3">
-          OUR PHOTO GALLERY
-        </h4>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-primary dark:text-white font-bold mb-2">
-          Photos of Donations and Humanitarian Works
-        </h2>
-        <AnimatedUnderline className="mx-auto" />
-      </div>
-      <motion.div
-        ref={view}
-        animate={
-          inView
-            ? { opacity: 1, y: 0, transition: { duration: 1 } }
-            : { opacity: 0, y: 150, transition: { duration: 1 } }
-        }
-      >
-        <Swiper
-          slidesPerView={2}
-          spaceBetween={10}
-          freeMode={true}
-          breakpoints={{
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            // when window width is >= 768px
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            // when window width is >= 1024px
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[FreeMode, Pagination]}
-          className="mySwiper w-[95%] text-white"
+      <Container>
+        <div className="text-center mb-20">
+          <h4 className="text-secondary text-lg font-semibold mb-3">
+            OUR PHOTO GALLERY
+          </h4>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl text-primary dark:text-white font-bold mb-2">
+            Photos of Donations and Humanitarian Works
+          </h2>
+          <AnimatedUnderline className="mx-auto" />
+        </div>
+        <motion.div
+          ref={view}
+          animate={
+            inView
+              ? { opacity: 1, y: 0, transition: { duration: 1 } }
+              : { opacity: 0, y: 150, transition: { duration: 1 } }
+          }
         >
-          <SwiperSlide className="mb-20">
-            <img src={galleyImg1} alt="" />
-          </SwiperSlide>
-          <SwiperSlide className="mb-20">
-            <img src={galleyImg2} alt="" />
-          </SwiperSlide>
-          <SwiperSlide className="mb-20">
-            <img src={galleyImg3} alt="" />
-          </SwiperSlide>
-          <SwiperSlide className="mb-20">
-            <img src={galleyImg4} alt="" />
-          </SwiperSlide>
-          <SwiperSlide className="mb-20">
-            <img src={galleyImg5} alt="" />
-          </SwiperSlide>
-          <SwiperSlide className="mb-20">
-            {" "}
-            <img src={galleyImg6} alt="" />
-          </SwiperSlide>
-          <SwiperSlide className="mb-20">
-            <img src={galleyImg7} alt="" />
-          </SwiperSlide>
-          <SwiperSlide className="mb-20">
-            <img src={galleyImg8} alt="" />
-          </SwiperSlide>
-        </Swiper>
-      </motion.div>
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={10}
+            freeMode={true}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              // when window width is >= 768px
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+              // when window width is >= 1024px
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[FreeMode, Pagination]}
+            className="mySwiper text-white"
+          >
+            <SwiperSlide className="mb-20">
+              <img src={galleyImg1} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="mb-20">
+              <img src={galleyImg2} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="mb-20">
+              <img src={galleyImg3} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="mb-20">
+              <img src={galleyImg4} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="mb-20">
+              <img src={galleyImg5} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="mb-20">
+              {" "}
+              <img src={galleyImg6} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="mb-20">
+              <img src={galleyImg7} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="mb-20">
+              <img src={galleyImg8} alt="" />
+            </SwiperSlide>
+          </Swiper>
+        </motion.div>
+      </Container>
     </div>
   );
 };

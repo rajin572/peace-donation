@@ -5,7 +5,6 @@ import OurMission from "@/components/home/OurMission";
 import SectionAboutUs from "@/components/home/SectionAboutUs";
 import Testimonials from "@/components/home/Testimonials";
 import TopDonations from "@/components/home/TopDonations";
-import ScrollToTop from "@/hooks/ScrollToTop";
 import { useAppSelector } from "@/redux/hooks";
 
 const Home = () => {
@@ -13,7 +12,6 @@ const Home = () => {
   return (
     <div className={` min-h-screen w-full ${darkMode ? "dark" : ""}`}>
       <div className="dark:bg-black dark:text-white">
-        <ScrollToTop />
         <Banner />
         <SectionAboutUs />
         <TopDonations />

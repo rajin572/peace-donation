@@ -9,7 +9,6 @@ import { verifyToken } from "@/utils/verifyToken";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import AnimatedUnderline from "@/components/layout/AnimatedUnderline";
-import ScrollToTop from "@/hooks/ScrollToTop";
 
 const intro = {
   hidden: { opacity: 0 },
@@ -69,7 +68,6 @@ const Login = () => {
 
   return (
     <>
-      <ScrollToTop />
       <div className={` min-h-screen w-full ${darkMode ? "dark" : ""}`}>
         <Container>
           <div className="min-h-fit pb-20">

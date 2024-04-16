@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import AnimatedUnderline from "@/components/layout/AnimatedUnderline";
-import ScrollToTop from "@/hooks/ScrollToTop";
 import { useAppSelector } from "@/redux/hooks";
 
 const intro = {
@@ -64,7 +63,6 @@ const Register = () => {
     <>
       <div className={` min-h-screen w-full ${darkMode ? "dark" : ""}`}>
         <Container>
-          <ScrollToTop />
           <div className="min-h-fit pb-20">
             <div className=" flex justify-center items-center flex-col mb-10">
               <motion.div

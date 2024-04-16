@@ -1,5 +1,6 @@
 import backgroundImage from "../../assets/volunteersBanner.jpg";
 import { motion } from "framer-motion";
+import Container from "../ui/Container";
 
 const intro = {
   hidden: { opacity: 0 },
@@ -35,31 +36,33 @@ const VolunteerBanner = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 1, duration: 1 }}
     >
-      <motion.div
-        className=" mx-auto  flex justify-center items-center text-center flex-col"
-        variants={intro}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.h4
-          className="text-secondary text-lg md:text-xl lg:text-xl font-bold mb-3"
-          variants={introChildren}
+      <Container>
+        <motion.div
+          className=" mx-auto  flex justify-center items-center text-center flex-col"
+          variants={intro}
+          initial="hidden"
+          animate="visible"
         >
-          Serve the humanity
-        </motion.h4>
-        <motion.h2
-          className="text-xl md:text-xxl lg:text-2xl text-white font-bold mb-3"
-          variants={introChildren}
-        >
-          Sign up for volunteer program
-        </motion.h2>
-        <motion.p className="text-white mb-10" variants={introChildren}>
-          Transform lives with your donation. Join us in creating change.
-          <br />
-          Every contribution matters.
-        </motion.p>
-        <motion.div variants={introChildren}></motion.div>
-      </motion.div>
+          <motion.h4
+            className="text-secondary text-lg md:text-xl lg:text-xl font-bold mb-3"
+            variants={introChildren}
+          >
+            Serve the humanity
+          </motion.h4>
+          <motion.h2
+            className="text-xl md:text-xxl lg:text-2xl text-white font-bold mb-3"
+            variants={introChildren}
+          >
+            Sign up for volunteer program
+          </motion.h2>
+          <motion.p className="text-white mb-10" variants={introChildren}>
+            Transform lives with your donation. Join us in creating change.
+            <br />
+            Every contribution matters.
+          </motion.p>
+          <motion.div variants={introChildren}></motion.div>
+        </motion.div>
+      </Container>
     </motion.div>
   );
 };
