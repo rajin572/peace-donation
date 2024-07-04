@@ -3,6 +3,7 @@ import AdminRoute from "@/components/layout/AdminRouted";
 import DashBoradLayout from "@/components/layout/DashBoradLayout";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import AboutUs from "@/pages/AboutUs";
+import CheckOutDonation from "@/pages/CheckOutDonation";
 import Community from "@/pages/Community";
 import CreateDonations from "@/pages/DashBoard/CreateDonations";
 import CreateTestimonial from "@/pages/DashBoard/CreateTestimonial";
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/donations/:id",
         element: <DonationDetails />,
+      },
+      {
+        path: "/check-out",
+        element: <CheckOutDonation />,
       },
       {
         path: "/leaderboard",

@@ -93,11 +93,20 @@ const Sidebar = ({ slider, setSlider }: TSlider) => {
               <Link to="/dashboard">Dashboard</Link>
             </li>
             <li onClick={() => setSlider(!slider)}>
-              <Link to="donations">Donations</Link>
+              <Link to="my-donation">My Donations</Link>
             </li>
-            <li onClick={() => setSlider(!slider)}>
-              <Link to="create-donation">Create Donation</Link>
-            </li>
+            {user?.role === "admin" ? (
+              <>
+                <li onClick={() => setSlider(!slider)}>
+                  <Link to="donations">Donations</Link>
+                </li>
+                <li onClick={() => setSlider(!slider)}>
+                  <Link to="create-donation">Create Donation</Link>
+                </li>
+              </>
+            ) : (
+              ""
+            )}
             <li onClick={() => setSlider(!slider)}>
               <Link to="create-testimonial">Create Testimonial</Link>
             </li>
