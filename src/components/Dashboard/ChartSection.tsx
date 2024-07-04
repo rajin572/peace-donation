@@ -31,7 +31,7 @@ const ChartSection = () => {
   );
 
   if (categoryAmounts) {
-    const data = Object.entries(categoryAmounts).map(([category, amount]) => [
+    const data = Object.entries(categoryAmounts)?.map(([category, amount]) => [
       category,
       amount,
     ]);
