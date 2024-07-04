@@ -29,7 +29,7 @@ const TopDonations = () => {
           <AnimatedUnderline className="mx-auto" />
         </div>
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 mx-auto">
-          {donationData?.data?.slice(0, 6).map((donation: TDonationCard) => (
+          {donationData?.data?.slice(0, 6)?.map((donation: TDonationCard) => (
             <DonationCard key={donation._id} donation={donation}></DonationCard>
           ))}
         </div>

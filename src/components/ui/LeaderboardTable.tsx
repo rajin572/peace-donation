@@ -40,7 +40,7 @@ const LeaderboardTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {sortedDonorData.map((donation: TDonorData, index: number) => (
+          {sortedDonorData?.map((donation: TDonorData, index: number) => (
             <TableRow key={donation._id}>
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell className="font-medium">

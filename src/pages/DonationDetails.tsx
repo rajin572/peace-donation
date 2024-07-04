@@ -48,7 +48,7 @@ const DonationDetails = () => {
               <p className="w-28 h-1 rounded-xl bg-secondary mb-4"></p>
               {sortedDonationData
                 ?.slice(0, 8)
-                .map((donation: TDonationCard) => (
+                ?.map((donation: TDonationCard) => (
                   <RecentDonationCard
                     key={donation._id}
                     image={donation.image}

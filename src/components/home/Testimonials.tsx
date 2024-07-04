@@ -81,7 +81,7 @@ const Testimonials = () => {
           >
             {sortedTestimonialData
               ?.slice(0, 6)
-              .map((donor: TDonorTestimonial) => (
+              ?.map((donor: TDonorTestimonial) => (
                 <SwiperSlide className="mb-20" key={donor._id}>
                   <TestimonialCard donor={donor}></TestimonialCard>
                 </SwiperSlide>
