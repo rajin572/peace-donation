@@ -1,23 +1,11 @@
 import { Link } from "react-router-dom";
-import { useInView, motion } from "framer-motion";
-import { useRef } from "react";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import Container from "../ui/Container";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const view = useRef<HTMLDivElement>(null);
-  const inView = useInView(view);
   return (
-    <motion.footer
-      className="bg-primary text-secondary border-t-2 border-t-secondary"
-      ref={view}
-      animate={
-        inView
-          ? { opacity: 1, y: 0, transition: { duration: 0.5 } }
-          : { opacity: 0, y: 100, transition: { duration: 0.5 } }
-      }
-    >
+    <footer className="bg-primary text-secondary border-t-2 border-t-secondary">
       <Container>
         <div className="mt-16">
           <div className="grid grid-cols-12">
@@ -70,7 +58,7 @@ const Footer = () => {
           </div>
         </div>
       </Container>
-    </motion.footer>
+    </footer>
   );
 };
 
