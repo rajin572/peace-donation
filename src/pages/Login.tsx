@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Container from "@/components/ui/Container";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FieldValues, useForm } from "react-hook-form";
@@ -9,6 +8,8 @@ import { verifyToken } from "@/utils/verifyToken";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import AnimatedUnderline from "@/components/layout/AnimatedUnderline";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 const intro = {
   hidden: { opacity: 0 },
@@ -32,13 +33,21 @@ const introChildren = {
 };
 
 const Login = () => {
+  const [defaultUser, setDefaultUser] = useState({ email: "", password: "" });
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const dispatch = useAppDispatch();
   const { darkMode } = useAppSelector((store) => store.theme);
   const [login] = useLoginMutation();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm(); // Remove defaultValues here
+
+  // Update form default values when defaultUser changes
+  useEffect(() => {
+    setValue("email", defaultUser.email);
+    setValue("password", defaultUser.password);
+  }, [defaultUser, setValue]);
 
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading("Logging in");
@@ -53,25 +62,34 @@ const Login = () => {
       const user = verifyToken(res.token) as TUser;
 
       dispatch(setUser({ user: user, token: res.token }));
-      toast.success("Loged In Successfully", {
+      toast.success("Logged In Successfully", {
         id: toastId,
         duration: 1200,
       });
       navigate(from, { replace: true });
-    } catch (error: any) {
-      toast.error(`${error.data.message}`, {
-        id: toastId,
-        duration: 1000,
-      });
+    } catch (error) {
+      if (error instanceof Error) {
+        // Handle specific error types here
+        toast.error(`${error.message}`, {
+          id: toastId,
+          duration: 1000,
+        });
+      } else {
+        // Handle other types of errors
+        toast.error(`Invalid Email and Password`, {
+          id: toastId,
+          duration: 1000,
+        });
+      }
     }
   };
 
   return (
     <>
-      <div className={` min-h-screen w-full ${darkMode ? "dark" : ""}`}>
+      <div className={`min-h-screen w-full ${darkMode ? "dark" : ""}`}>
         <Container>
           <div className="min-h-fit pb-20">
-            <div className=" flex justify-center items-center flex-col mb-10">
+            <div className="flex justify-center items-center flex-col mb-10">
               <motion.div
                 className="text-center my-10"
                 variants={intro}
@@ -94,6 +112,37 @@ const Login = () => {
                   <AnimatedUnderline className="mx-auto" />
                 </motion.div>
               </motion.div>
+              {/* Set Default Value */}
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: -150 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 1 }}
+              >
+                <Button
+                  onClick={() =>
+                    setDefaultUser({
+                      email: "admin@gmail.com",
+                      password: "25802580",
+                    })
+                  }
+                >
+                  Set Admin Email and Password
+                </Button>
+                <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600">
+                  Or
+                </div>
+                <Button
+                  onClick={() =>
+                    setDefaultUser({
+                      email: "din.islam.rajin572@gmail.com",
+                      password: "25802580",
+                    })
+                  }
+                >
+                  Set User Email and Password
+                </Button>
+              </motion.div>
               <motion.div
                 className="mt-10 rounded-md border-2 border-primary dark:border-secondary dark:bg-zinc-950 p-5 md:p-10 w-90% sm:w-[70%] md:w-[50%] lg:w-[30%]"
                 initial={{ opacity: 0, y: 150 }}
@@ -102,7 +151,7 @@ const Login = () => {
               >
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-5">
-                    <label className="flex items-center text-primary ">
+                    <label className="flex items-center text-primary">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -158,7 +207,7 @@ const Login = () => {
                       className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-3 rounded text-black"
                     />
                   </div>
-                  <div className=" mt-6">
+                  <div className="mt-6">
                     <button className="w-full border-2 border-primary dark:border-secondary bg-primary dark:bg-secondary text-white font-bold py-2 rounded duration-500 transition-all flex justify-center items-center gap-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -181,8 +230,8 @@ const Login = () => {
                   </div>
                 </form>
                 <p className="mt-10 text-primary dark:text-white">
-                  Haven{"'"}t any account,{" "}
-                  <Link to="/register" className=" text-secondary font-bold">
+                  Haven't any account,{" "}
+                  <Link to="/register" className="text-secondary font-bold">
                     Create an account
                   </Link>
                 </p>

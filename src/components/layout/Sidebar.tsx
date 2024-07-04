@@ -1,6 +1,8 @@
 import { Dispatch } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "@/redux/hooks";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 
 type TSlider = {
   slider: boolean;
@@ -8,6 +10,7 @@ type TSlider = {
 };
 
 const Sidebar = ({ slider, setSlider }: TSlider) => {
+  const user = useAppSelector(selectCurrentUser);
   return (
     <motion.div
       className=" bg-primary text-white h-screen pt-20 "
@@ -65,11 +68,20 @@ const Sidebar = ({ slider, setSlider }: TSlider) => {
               <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
-              <Link to="donations">Donations</Link>
+              <Link to="my-donation">My Donations</Link>
             </li>
-            <li>
-              <Link to="create-donation">Create Donation</Link>
-            </li>
+            {user?.role === "admin" ? (
+              <>
+                <li>
+                  <Link to="donations"> All Donation Posts</Link>
+                </li>
+                <li>
+                  <Link to="create-donation">Create Donation</Link>
+                </li>
+              </>
+            ) : (
+              ""
+            )}
             <li>
               <Link to="create-testimonial">Create Testimonial</Link>
             </li>

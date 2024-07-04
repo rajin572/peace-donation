@@ -21,7 +21,6 @@ const CreateTestimonial = () => {
   const user = useAppSelector(selectCurrentUser);
 
   const { data: donorData, isFetching } = useGetSingleDonorQuery(user!.email);
-  console.log(donorData);
 
   const [postTestimonial] = usePostTestimonialMutation();
 
@@ -32,10 +31,18 @@ const CreateTestimonial = () => {
     const toastId = toast.loading("Creating Testimonial....");
     try {
       const imageData = data.image;
-      const imageUrl = await uploadImage(imageData);
+      let imageUrl;
+      if (imageData.length !== 0) {
+        imageUrl = await uploadImage(imageData);
+        if (imageUrl.status_code === 400) {
+          throw new Error("ImageBB Can't Upload This Image Try Another Image");
+        }
+      }
 
       const testimonialData = {
-        image: imageUrl?.data?.url,
+        image:
+          imageUrl?.data?.url ||
+          "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
         name: data.name.toLowerCase(),
         email: data.email,
         amount: Number(data.amount),
@@ -103,7 +110,6 @@ const CreateTestimonial = () => {
                   {...register("image")}
                   name="image"
                   placeholder="Enter Your Image Link"
-                  required
                   className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-3 rounded text-black dark:text-white"
                 />
               </div>

@@ -41,6 +41,7 @@ const Register = () => {
       const userInfo = {
         name: data.name.toLowerCase(),
         email: data.email,
+        role: "user",
         password: data.password,
       };
 

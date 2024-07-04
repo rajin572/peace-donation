@@ -1,4 +1,5 @@
 import App from "@/App";
+import AdminRoute from "@/components/layout/AdminRouted";
 import DashBoradLayout from "@/components/layout/DashBoradLayout";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import AboutUs from "@/pages/AboutUs";
@@ -7,6 +8,7 @@ import CreateDonations from "@/pages/DashBoard/CreateDonations";
 import CreateTestimonial from "@/pages/DashBoard/CreateTestimonial";
 import DashBoard from "@/pages/DashBoard/DashBoard";
 import DashBoardDonations from "@/pages/DashBoard/DashBoardDonations";
+import MyDonation from "@/pages/DashBoard/MyDonation";
 
 import DonationDetails from "@/pages/DonationDetails";
 import Donations from "@/pages/Donations";
@@ -75,12 +77,25 @@ const router = createBrowserRouter([
         element: <DashBoard />,
       },
       {
-        path: "/dashboard/donations",
-        element: <DashBoardDonations />,
+        path: "/dashboard/my-donation",
+        element: <MyDonation />,
       },
       {
+        path: "/dashboard/donations",
+        element: (
+          <AdminRoute>
+            <DashBoardDonations />
+          </AdminRoute>
+        ),
+      },
+
+      {
         path: "/dashboard/create-donation",
-        element: <CreateDonations />,
+        element: (
+          <AdminRoute>
+            <CreateDonations />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/create-testimonial",

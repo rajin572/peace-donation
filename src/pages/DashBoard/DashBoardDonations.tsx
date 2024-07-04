@@ -27,7 +27,7 @@ const DashBoardDonations = () => {
   }
   return (
     <motion.div
-      className="mb-20"
+      className="my-10 "
       initial={{ opacity: 0, y: 150 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 1 }}

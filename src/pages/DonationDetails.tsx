@@ -19,7 +19,7 @@ const DonationDetails = () => {
   const { data: donation, isFetching } = useGetSingleDonationQuery(id);
 
   const { data: donationData } = useGetDonationsQuery(undefined);
-  console.log(donationData?.data);
+
   const sortedDonationData = donationData?.data
     ?.slice()
     .sort(

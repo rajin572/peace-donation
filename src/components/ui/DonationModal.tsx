@@ -33,13 +33,28 @@ const DonationModal = ({
     const toastId = toast.loading("Please Wait! Donation added....");
     try {
       const imageData = data.image;
-      const imageUrl = await uploadImage(imageData);
+
+      let imageUrl;
+      if (imageData.length !== 0) {
+        imageUrl = await uploadImage(imageData);
+        if (imageUrl.status_code === 400) {
+          throw new Error("ImageBB Can't Upload This Image Try Another Image");
+        }
+      }
       if (user) {
         const donorData = {
           name: user?.name,
           email: user?.email,
           amount: Number(data.amount),
-          image: imageUrl?.data?.url,
+          image:
+            imageUrl?.data?.url ||
+            "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+          donationPost: {
+            name: donation.title,
+            image: donation.image,
+            category: donation.category,
+            amount: Number(data.amount),
+          },
         };
 
         await postDonor(donorData);
@@ -48,7 +63,7 @@ const DonationModal = ({
           id: toastId,
           duration: 1000,
         });
-        navigate(`/dashboard`);
+        navigate(`/dashboard/my-donation`);
       } else {
         navigate(`/dashboard`);
         throw new Error("You Must Login First");
@@ -124,7 +139,6 @@ const DonationModal = ({
                   {...register("image")}
                   name="image"
                   placeholder="Enter Your Image Link"
-                  required
                   className="border-2 focus:border-secondary focus:ring-secondary p-2 outline-none w-full mt-3 rounded"
                 />
               </div>
