@@ -84,7 +84,7 @@ const DonationModal = ({
           <HeartHandshake />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] md:max-w-[600px]">
         <DialogHeader>
           <DialogTitle>Donate On {donation.title}</DialogTitle>
         </DialogHeader>
